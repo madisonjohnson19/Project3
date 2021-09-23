@@ -34,6 +34,7 @@ int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, ch
  *         SUCCESS
  */
 int calculateFinalGrade(std::vector<KP::studentData> &allstudentData);
+
 //void extractFailingStudents(double failgrade = FAILGRADE);
 
 /***
