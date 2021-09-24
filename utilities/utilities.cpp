@@ -63,21 +63,50 @@ int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, ch
 		std::string line;
 			while (!myfile.eof()) {				//exits when reach end of file
 				getline(myfile, line);
-
+				int counter =0;
+				string name= "";
+				string midterm= "";
+				string tmidterm= "";
+				string gradefinal= "";
 				for (int y=0;y< line.length();y++){
-					cout << "LINE: "<<line[3]<< line[4]<<line[5]<<"$";
 					if (line[y]==separator_char){
-						cout << "HERE: " <<separator_char << " = "<<line[y];
+						counter ++;
 					}
-					student.name=line[2];
-					student.midterm1 = line[y+1];
-					student.midterm2 = line[y+2];
-					student.finalgrade =line[y+3];
-					allstudentData.push_back(student);			//exits when reach end of file
-					cout << "NAME; "<<student.name;
-					return 0;
+					else if (counter ==0){
+						name+=line[y];
+
+					}
+					else if (counter ==1){
+						midterm+=line[y];
+						cout <<"\nMIDTERM 1: "<<midterm<<" "<<student.midterm1<<" \n";
+
+					}
+					else if (counter ==2){
+						tmidterm+=line[y];
+
+					}
+					else if (counter ==3){
+						gradefinal+=line[y];
+
+					}
+
+					student.name=name;
+									student.midterm1=stringToDouble(midterm);
+									student.midterm2 = tmidterm;
+									student.finalgrade = gradefinal;
+									allstudentData.push_back(student);
+
+
+
+								//exits when reach end of file
+
+
 				}
+
+				cout<< name <<" MIDTERM 1: "<< midterm << " MIDTERM 2: "<<tmidterm <<"FINAL: "<<gradefinal << " END";
 			}
+
+
 			myfile.close();
 			return 0;
 }
