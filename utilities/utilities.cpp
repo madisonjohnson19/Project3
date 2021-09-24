@@ -63,6 +63,7 @@ int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, ch
 		std::string line;
 			while (!myfile.eof()) {				//exits when reach end of file
 				getline(myfile, line);
+				//cout <<"LINE: "<<line<< " ";
 				int counter =0;
 				string name= "";
 				string midterm= "";
@@ -78,7 +79,7 @@ int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, ch
 					}
 					else if (counter ==1){
 						midterm+=line[y];
-						cout <<"\nMIDTERM 1: "<<midterm<<" "<<student.midterm1<<" \n";
+
 
 					}
 					else if (counter ==2){
@@ -90,11 +91,12 @@ int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, ch
 
 					}
 
-					student.name=name;
+
+					/**student.name=name;
 									student.midterm1=stringToDouble(midterm);
 									student.midterm2 = tmidterm;
 									student.finalgrade = gradefinal;
-									allstudentData.push_back(student);
+									allstudentData.push_back(student);**/
 
 
 
@@ -103,7 +105,7 @@ int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, ch
 
 				}
 
-				cout<< name <<" MIDTERM 1: "<< midterm << " MIDTERM 2: "<<tmidterm <<"FINAL: "<<gradefinal << " END";
+				cout<< name <<" MIDTERM 1: "<< midterm << " MIDTERM 2: "<<tmidterm <<"FINAL: "<<gradefinal << " END\n";
 			}
 
 
@@ -117,6 +119,8 @@ int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, ch
 
 
 int calculateFinalGrade(std::vector<KP::studentData> &allstudentData){
+
+
 	return 7;
 
 }
