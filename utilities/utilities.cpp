@@ -1,3 +1,4 @@
+
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -10,6 +11,8 @@
 #include "../includes/constants.h"
 #include "../includes/utilities.h"
 using namespace std;
+
+
 
 //if you are debugging the file must be in the project parent directory
 std::string DoubleToString(double Number) {
@@ -37,23 +40,49 @@ double stringToDouble(const char *myString) {
 	return atof(myString);
 }
 
-int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, char separator_char ){
-
-
+//int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, char separator_char ){
+int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, char separator_char){
 
 	allstudentData.clear();
+	cout <<"**********************READFILE*******************" << endl;
+
+		std::stringstream   lineStream;
+		std::string         cell;
+
+
+
+
+
+
+	KP::studentData student;
+
 
 		ifstream myfile;
 		myfile.open(file.c_str(),ios::in);
 
 		std::string line;
 			while (!myfile.eof()) {				//exits when reach end of file
-				getline(myfile, line);				//gets a line up to '/n' char allstudentData += line;
-				cout << line;
-				//
+				getline(myfile, line);
+
+				for (int y=0;y< line.length();y++){
+					cout << "LINE: "<<line[3]<< line[4]<<line[5]<<"$";
+					if (line[y]==separator_char){
+						cout << "HERE: " <<separator_char << " = "<<line[y];
+					}
+					student.name=line[2];
+					student.midterm1 = line[y+1];
+					student.midterm2 = line[y+2];
+					student.finalgrade =line[y+3];
+					allstudentData.push_back(student);			//exits when reach end of file
+					cout << "NAME; "<<student.name;
+					return 0;
+				}
 			}
 			myfile.close();
+			return 0;
 }
+
+
 
 
 
