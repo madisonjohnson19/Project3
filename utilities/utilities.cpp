@@ -105,6 +105,7 @@ int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, ch
 
 
 			myfile.close();
+
 			return 0;
 }
 
@@ -118,12 +119,12 @@ int calculateFinalGrade(std::vector<KP::studentData> &allstudentData){
 	int sum =0;
 	int total =0;
 	std:vector<KP::studentData>::iterator itr = allstudentData.begin();
-	while (itr != allstudentData.end()){
-		//cout<<"M1: "<<(*itr).midterm1 <<" M2: "<< (*itr).midterm2;
-		sum = (*itr).midterm1 +(*itr).midterm2;
-		total = sum/2;
-		++itr;
+	for (itr =  allstudentData.begin(); itr!= allstudentData.end();++itr){
+			sum = (*itr).midterm1 +(*itr).midterm2;
+			total = sum/2;
+			//cout <<"TOTAL: "<<total<<"\n";
 	}
+
 	return total;
 
 }
