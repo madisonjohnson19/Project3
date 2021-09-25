@@ -1,1 +1,1 @@
-t 0 0 0 ta 0 0 0 tai 0 0 0 tail 0 0 0 taile 0 0 0 tailer 0 0 0 tailer 0 0 0 tailer 0 0 0 tailer 0 0 0 tailer 0 1 0 tailer 0 10 0 tailer 0 100 0 h 0 0 0 he 0 0 0 hen 0 0 0 henr 0 0 0 henry 0 0 0 henry 0 0 0 henry 9 0 0 henry 98 0 0 henry 98 0 0 henry 98 1 0 henry 98 10 0 henry 98 100 0 a 0 0 0 an 0 0 0 ans 0 0 0 anse 0 0 0 ansel 0 0 0 ansel 0 0 0 ansel 7 0 0 ansel 70 0 0 ansel 70 0 0 ansel 70 8 0 ansel 70 80 0 b 0 0 0 br 0 0 0 bri 0 0 0 bria 0 0 0 brian 0 0 0 brian 0 0 0 brian 1 0 0 brian 1 0 0 brian 1 4 0 
+ 0 0 -1  0 0 -1 tailer 0 100 -1  100 100 -1  100 100 -1  100 100 -1 
