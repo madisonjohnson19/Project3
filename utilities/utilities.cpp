@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <iterator>
 #include <stdlib.h>
 #include <algorithm>
 #include <vector>
@@ -44,13 +45,7 @@ double stringToDouble(const char *myString) {
 int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, char separator_char){
 
 	allstudentData.clear();
-	cout <<"**********************READFILE*******************" << endl;
-
-		std::stringstream   lineStream;
-		std::string         cell;
-
-
-
+	//cout <<"**********************READFILE*******************" << endl;
 
 
 
@@ -92,11 +87,11 @@ int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, ch
 					}
 
 
-					/**student.name=name;
-									student.midterm1=stringToDouble(midterm);
-									student.midterm2 = tmidterm;
-									student.finalgrade = gradefinal;
-									allstudentData.push_back(student);**/
+					student.name=name;
+									student.midterm1=stringToDouble(midterm.c_str());
+									student.midterm2 = stringToDouble(tmidterm.c_str());
+									student.finalgrade = stringToDouble(gradefinal.c_str());
+									allstudentData.push_back(student);
 
 
 
@@ -105,7 +100,7 @@ int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, ch
 
 				}
 
-				cout<< name <<" MIDTERM 1: "<< midterm << " MIDTERM 2: "<<tmidterm <<"FINAL: "<<gradefinal << " END\n";
+				//cout<< name <<" MIDTERM 1: "<< stringToDouble(midterm.c_str()) << " MIDTERM 2: "<<stringToDouble(tmidterm.c_str()) <<"FINAL: "<<stringToDouble(gradefinal.c_str()) << " END\n";
 			}
 
 
@@ -119,27 +114,56 @@ int readFile(std::string &file, std::vector<KP::studentData> &allstudentData, ch
 
 
 int calculateFinalGrade(std::vector<KP::studentData> &allstudentData){
-
-
-	return 7;
+	//cout << "*************************CALCULATE FINAL GRADE*********************";
+	int sum =0;
+	int total =0;
+	std:vector<KP::studentData>::iterator itr = allstudentData.begin();
+	while (itr != allstudentData.end()){
+		//cout<<"M1: "<<(*itr).midterm1 <<" M2: "<< (*itr).midterm2;
+		sum = (*itr).midterm1 +(*itr).midterm2;
+		total = sum/2;
+		++itr;
+	}
+	return total;
 
 }
 
 int writeFile(std::string &file, std::vector<KP::studentData> &allstudentData, char separator_char){
-
+	std:vector<KP::studentData>::iterator itr;
 
 	ofstream myOutputfile;
 	myOutputfile.open(file.c_str());//could open with  flags myfile.open(MYFILE, ios::out)
-										  //note the .c_str() call on MYFILE  allstudentData << file;
-		if (!myOutputfile.is_open())
-				return false;
+	for (itr =  allstudentData.begin(); itr!= allstudentData.end();++itr){
+		myOutputfile << (*itr).name << separator_char<<(*itr).midterm1<< separator_char<<(*itr).midterm2<< separator_char<<(*itr).finalgrade<< separator_char;
+	}
 
 
-		myOutputfile.close();
-		return true;
+
+	myOutputfile.close();
 }
 
+/**bool compareName(const x,std::vector<KP::studentData> &y)
+{
+	KP:: studentData x
+		return x.name < y.name;
+}
+
+bool compareFinal(std::vector<KP::studentData> &x, std::vector<KP::studentData> &y)
+{
+	return x.finalgrade > y.finalgrade;
+}**/
+
 int sortStudentData(std::vector<KP::studentData> &allstudentData,KP::SORT_TYPE st){
+	KP:: studentData student;
+
+
+	if (st == KP::NAME){
+		return student.name < student.name;
+
+	}
+	if (st == KP::FINAL_GRADE){
+		return student.name < student.name;
+	}
 	return 7;
 }
 
